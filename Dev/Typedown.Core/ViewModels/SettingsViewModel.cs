@@ -38,6 +38,7 @@ namespace Typedown.Core.ViewModels
         public bool PreferLooseListItem { get => GetSettingValue(true); set => SetSettingValue(value); }
         public bool AutoPairMarkdownSyntax { get => GetSettingValue(true); set => SetSettingValue(value); }
         public string EditorAreaWidth { get => GetSettingValue("1200px"); set => SetSettingValue(value); }
+        public DocumentTheme DocumentTheme { get => GetSettingValue(Enums.DocumentTheme.GitHub); set => SetSettingValue(value); }
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
         public AppTheme AppTheme { get => GetSettingValue(AppTheme.Default); set => SetSettingValue(value); }
         public string Language { get => GetSettingValue("default"); set => SetSettingValue(value); }
@@ -97,7 +98,8 @@ namespace Typedown.Core.ViewModels
             "TrimUnnecessaryCodeBlockEmptyLines",
             "PreferLooseListItem",
             "AutoPairMarkdownSyntax",
-            "EditorAreaWidth"
+            "EditorAreaWidth",
+            "DocumentTheme"
         };
 
         public SettingsViewModel(IServiceProvider serviceProvider)
@@ -151,7 +153,7 @@ namespace Typedown.Core.ViewModels
         {
             PropertyChanged?.Invoke(this, new(propertyName));
             if (notifySet.Contains(propertyName))
-                MarkdownEditor.PostMessage("SettingsChanged", new Dictionary<string, object>() { { propertyName, after } });
+                MarkdownEditor.PostMessage("SettingsChanged", new Dictionary<string, object>() { { propertyName, propertyName == nameof(DocumentTheme) ? after?.ToString() : after } });
         }
 
         public async void ResetSetting()

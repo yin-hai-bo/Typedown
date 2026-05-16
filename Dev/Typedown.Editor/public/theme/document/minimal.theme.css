@@ -1,0 +1,52 @@
+#ag-editor-id {
+  letter-spacing: 0.01em;
+}
+
+#ag-editor-id h1,
+#ag-editor-id h2,
+#ag-editor-id h3,
+#ag-editor-id h4,
+#ag-editor-id h5,
+#ag-editor-id h6 {
+  border-bottom: none;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  color: var(--editorColor);
+}
+
+#ag-editor-id p,
+#ag-editor-id li {
+  color: var(--editorColor80);
+}
+
+#ag-editor-id a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+#ag-editor-id blockquote {
+  border-left: 2px solid var(--editorColor10);
+  margin: 1.25rem 0;
+  padding: 0.1rem 0 0.1rem 1rem;
+  color: var(--editorColor50);
+  background: transparent;
+}
+
+#ag-editor-id table,
+#ag-editor-id th,
+#ag-editor-id td {
+  border-color: var(--editorColor10);
+}
+
+#ag-editor-id table th {
+  background: transparent;
+}
+
+#ag-editor-id pre.ag-paragraph,
+#ag-editor-id pre code {
+  border: 1px solid var(--editorColor10);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}

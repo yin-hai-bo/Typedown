@@ -1,0 +1,15 @@
+<local:MenuBarItemBase
+    Title="{u:LocaleString Key=Theme}"
+    x:Class="Typedown.Core.Controls.EditorControls.MenuBarItems.ThemeItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Typedown.Core.Controls.EditorControls.MenuBarItems"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="using:Typedown.Core.Utilities"
+    Loaded="OnLoaded"
+    mc:Ignorable="d">
+    <ToggleMenuFlyoutItem x:Name="GitHubItem" Text="GitHub" Click="OnThemeItemClick"/>
+    <ToggleMenuFlyoutItem x:Name="MinimalItem" Text="Minimal" Click="OnThemeItemClick"/>
+    <ToggleMenuFlyoutItem x:Name="PaperItem" Text="Paper" Click="OnThemeItemClick"/>
+</local:MenuBarItemBase>

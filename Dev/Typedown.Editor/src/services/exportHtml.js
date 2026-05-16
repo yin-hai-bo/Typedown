@@ -5,6 +5,9 @@ import 'katex/dist/contrib/mhchem.min.js'
 import loadRenderer from '../components/Muya/lib/renderers'
 import githubMarkdownCss from '!!raw-loader!github-markdown-css/github-markdown.css'
 import exportStyle from '!!raw-loader!../assets/styles/exportStyle.css'
+import githubThemeCss from '!!raw-loader!../assets/styles/exportThemes/github.css'
+import minimalThemeCss from '!!raw-loader!../assets/styles/exportThemes/minimal.css'
+import paperThemeCss from '!!raw-loader!../assets/styles/exportThemes/paper.css'
 import highlightCss from '!!raw-loader!prismjs/themes/prism.css'
 import katexCss from '!!raw-loader!katex/dist/katex.css'
 import footerHeaderCss from '!!raw-loader!../assets/styles/headerFooterStyle.css'
@@ -20,6 +23,12 @@ const DIAGRAM_TYPE = [
   'plantuml',
   'vega-lite'
 ]
+
+const EXPORT_THEME_STYLES = {
+  github: githubThemeCss,
+  minimal: minimalThemeCss,
+  paper: paperThemeCss
+}
 
 class ExportHtml {
   constructor(markdown, options) {
@@ -202,6 +211,8 @@ class ExportHtml {
    */
   async generate(options) {
     const { printOptimization } = options
+    const documentTheme = normalizeDocumentTheme(this.options?.documentTheme ?? this.options?.DocumentTheme)
+    const documentThemeCss = EXPORT_THEME_STYLES[documentTheme] ?? EXPORT_THEME_STYLES.github
 
     // WORKAROUND: Hide Prism.js style when exporting or printing. Otherwise the background color is white in the dark theme.
     const highlightCssStyle = printOptimization ? `@media print { ${highlightCss} }` : highlightCss
@@ -219,6 +230,9 @@ class ExportHtml {
   <title>${sanitize(title, EXPORT_DOMPURIFY_CONFIG, true)}</title>
   <style>
   ${githubMarkdownCss}
+  </style>
+  <style>
+  ${documentThemeCss}
   </style>
   <style>
   ${highlightCssStyle}
@@ -397,3 +411,16 @@ const getHeaderFooterStyledClass = value => {
 }
 
 export default ExportHtml
+
+function normalizeDocumentTheme(theme) {
+  if (typeof theme === 'string' && theme.length > 0) {
+    return theme.toLowerCase()
+  }
+  if (theme === 1) {
+    return 'minimal'
+  }
+  if (theme === 2) {
+    return 'paper'
+  }
+  return 'github'
+}

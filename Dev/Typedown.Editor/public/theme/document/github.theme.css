@@ -1,0 +1,30 @@
+#ag-editor-id {
+  letter-spacing: 0;
+}
+
+#ag-editor-id h1,
+#ag-editor-id h2,
+#ag-editor-id h3,
+#ag-editor-id h4,
+#ag-editor-id h5,
+#ag-editor-id h6 {
+  border-bottom: 1px solid var(--editorColor10);
+  padding-bottom: 0.3em;
+}
+
+#ag-editor-id blockquote {
+  border-left: 4px solid var(--themeColor30);
+  margin: 1rem 0;
+  padding: 0.2rem 1rem;
+  color: var(--editorColor60);
+  background: transparent;
+}
+
+#ag-editor-id table th {
+  background: var(--editorColor04);
+}
+
+#ag-editor-id pre.ag-paragraph,
+#ag-editor-id pre code {
+  border-radius: 8px;
+}

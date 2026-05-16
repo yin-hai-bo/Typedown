@@ -31,6 +31,8 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+# VS Code
+.vscode/
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
@@ -106,6 +108,7 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
+*.lscache
 
 # Visual Studio profiler
 *.psess
@@ -218,6 +221,10 @@ _pkginfo.txt
 *.[Cc]ache
 # but keep track of directories ending in .cache
 !?*.[Cc]ache/
+#
+# UWP/XAML design-time or theme-build intermediate output directory.
+# Similar to obj/, it contains generated .xbf/.xaml/cache files and should not be tracked.
+**/obj_theme/
 
 # Others
 ClientBin/

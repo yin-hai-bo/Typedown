@@ -2,6 +2,7 @@ import transport from 'services/transport';
 import { remote } from 'services/remote';
 
 transport.addListener('ThemeChanged', onThemeChanged)
+transport.addListener<Record<string, unknown>>('SettingsChanged', onSettingsChanged)
 
 remote.getCurrentTheme().then(arg => {
     onThemeChanged(arg);
@@ -19,7 +20,28 @@ function getorCreateStyle(id: string) {
     return style;
 }
 
-function onThemeChanged({ theme, accentColor, background }: any) {
+function normalizeDocumentTheme(theme: unknown) {
+    if (typeof theme === 'string' && theme.length > 0) {
+        return theme.toLowerCase()
+    }
+    if (theme === 1) {
+        return 'minimal'
+    }
+    if (theme === 2) {
+        return 'paper'
+    }
+    return 'github'
+}
+
+function updateDocumentTheme(theme: unknown) {
+    const documentStyleDocument = getorCreateStyle("link_style_document");
+    const documentTheme = normalizeDocumentTheme(theme)
+    documentStyleDocument.href = `theme/document/${documentTheme}.theme.css`
+    document.documentElement.style.setProperty('--documentTheme', documentTheme)
+    ; (window as any).documentTheme = documentTheme
+}
+
+function onThemeChanged({ theme, accentColor, background, documentTheme }: any) {
     const editorStyleDocument = getorCreateStyle("link_style_editor");
     const prismjsStyleDocument = getorCreateStyle("link_style_prismjs");
     const codemirrorStyleDocument = getorCreateStyle("link_style_codemirror");
@@ -37,6 +59,13 @@ function onThemeChanged({ theme, accentColor, background }: any) {
     document.documentElement.style.setProperty('--actualTheme', theme)
     document.documentElement.style.setProperty('--themeColor', `rgba(${r}, ${g}, ${b}, ${a})`)
     themeColorAlphas.forEach(e => document.documentElement.style.setProperty(`--themeColor${e}`, `rgba(${r}, ${g}, ${b}, ${a * (e / 100)})`))
+    updateDocumentTheme(documentTheme)
 
-    window.actualTheme = theme
+    ; (window as any).actualTheme = theme
+}
+
+function onSettingsChanged(newOptions: Record<string, unknown>) {
+    if ('DocumentTheme' in newOptions || 'documentTheme' in newOptions) {
+        updateDocumentTheme(newOptions.DocumentTheme ?? newOptions.documentTheme)
+    }
 }

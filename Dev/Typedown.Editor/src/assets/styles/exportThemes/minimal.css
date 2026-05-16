@@ -1,0 +1,43 @@
+.markdown-body {
+  color: #202124;
+  letter-spacing: 0.01em;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  border-bottom: none;
+  color: #111827;
+}
+
+.markdown-body a {
+  color: #1f6feb;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.markdown-body blockquote {
+  color: #6b7280;
+  border-left: 2px solid #d1d5db;
+  background: transparent;
+}
+
+.markdown-body table th {
+  background-color: transparent;
+}
+
+.markdown-body table th,
+.markdown-body table td,
+.markdown-body hr,
+.markdown-body pre {
+  border-color: #e5e7eb;
+}
+
+.markdown-body pre {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}

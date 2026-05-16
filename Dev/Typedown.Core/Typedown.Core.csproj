@@ -197,6 +197,9 @@
     <Compile Include="Controls\EditorControls\MenuBarItems\ParagraphItem.xaml.cs">
       <DependentUpon>ParagraphItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\EditorControls\MenuBarItems\ThemeItem.xaml.cs">
+      <DependentUpon>ThemeItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EditorControls\MenuBarItems\ViewItem.xaml.cs">
       <DependentUpon>ViewItem.xaml</DependentUpon>
     </Compile>
@@ -311,6 +314,7 @@
     <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="Converters\ShortcutKeyToStringConverter.cs" />
     <Compile Include="Enums\AppTheme.cs" />
+    <Compile Include="Enums\DocumentTheme.cs" />
     <Compile Include="Enums\ExportType.cs" />
     <Compile Include="Enums\ImageUploadMethod.cs" />
     <Compile Include="Enums\InsertImageAction.cs" />
@@ -539,6 +543,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\EditorControls\MenuBarItems\ParagraphItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditorControls\MenuBarItems\ThemeItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

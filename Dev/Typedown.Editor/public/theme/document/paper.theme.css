@@ -1,0 +1,64 @@
+#ag-editor-id {
+  letter-spacing: 0.005em;
+}
+
+#ag-editor-id h1,
+#ag-editor-id h2,
+#ag-editor-id h3,
+#ag-editor-id h4,
+#ag-editor-id h5,
+#ag-editor-id h6 {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--editorColor);
+}
+
+#ag-editor-id h1 {
+  margin-top: 0.4em;
+  margin-bottom: 0.8em;
+  padding-bottom: 0.45em;
+  border-bottom: 2px solid var(--editorColor30);
+}
+
+#ag-editor-id h2 {
+  margin-top: 1.8em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--editorColor10);
+}
+
+#ag-editor-id p,
+#ag-editor-id li {
+  text-align: justify;
+}
+
+#ag-editor-id a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+#ag-editor-id blockquote {
+  margin: 1.2rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--editorColor30);
+  background: var(--editorColor04);
+  color: var(--editorColor80);
+}
+
+#ag-editor-id table {
+  border-collapse: collapse;
+}
+
+#ag-editor-id table th {
+  background: var(--editorColor04);
+}
+
+#ag-editor-id table th,
+#ag-editor-id table td {
+  border-color: var(--editorColor30);
+}
+
+#ag-editor-id pre.ag-paragraph,
+#ag-editor-id pre code {
+  border: 1px solid var(--editorColor10);
+  border-radius: 4px;
+}

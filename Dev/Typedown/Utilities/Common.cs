@@ -31,7 +31,7 @@ namespace Typedown.Utilities
             var accentColor = new UISettings().GetColorValue(UIColorType.Accent);
             var solidBackground = isDarkMode ? Color.FromArgb(0xFF, 0x28, 0x28, 0x28) : Color.FromArgb(0xFF, 0xF9, 0xF9, 0xF9);
             var background = settings.UseMicaEffect && settings.UseEditorMicaEffect ? Colors.Transparent : solidBackground;
-            return new { theme = isDarkMode ? "Dark" : "Light", accentColor, background };
+            return new { theme = isDarkMode ? "Dark" : "Light", accentColor, background, documentTheme = settings.DocumentTheme.ToString() };
         }
 
         public static bool GetUseLightTheme()

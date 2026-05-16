@@ -33,6 +33,7 @@
             <items:EditItem/>
             <items:ParagraphItem Visibility="{x:Bind IsCollapsed(Settings.SourceCode), Mode=OneWay}"/>
             <items:FormatItem Visibility="{x:Bind IsCollapsed(Settings.SourceCode), Mode=OneWay}"/>
+            <items:ThemeItem/>
             <items:ViewItem/>
         </muxc:MenuBar>
         <Grid x:Name="TitleGrid" Grid.Column="1" x:Load="{x:Bind Settings.AppCompactMode, Mode=OneWay}">
