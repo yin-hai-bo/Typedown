@@ -15,6 +15,8 @@ namespace Typedown.Core
 {
     public static class Config
     {
+        private const string DefaultAppId = "Typedown-cs";
+
         public static bool IsMicaSupported { get; } = Environment.OSVersion.Version.Build >= 22000;
 
         public static IReadOnlyList<string> WebView2Args { get; } = new List<string>()
@@ -43,14 +45,16 @@ namespace Typedown.Core
             }
             catch (Exception)
             {
-                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), AppName);
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), AppId);
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 return path;
             }
         }
 
-        public static string AppName => "Typedown";
+        public static string AppDisplayName { get; } = ResolveAppDisplayName();
+
+        public static string AppId { get; } = ResolveAppId();
 
         public static bool IsPackaged { get; private set; }
 
@@ -64,6 +68,38 @@ namespace Typedown.Core
             {
                 IsPackaged = false;
             }
+        }
+
+        private static string ResolveAppDisplayName()
+        {
+            try
+            {
+                var displayName = Package.Current?.DisplayName;
+                if (!string.IsNullOrWhiteSpace(displayName))
+                    return displayName;
+            }
+            catch
+            {
+                // Ignore and fall back to the source-defined app name.
+            }
+
+            return DefaultAppId;
+        }
+
+        private static string ResolveAppId()
+        {
+            try
+            {
+                var packageName = Package.Current?.Id?.Name;
+                if (!string.IsNullOrWhiteSpace(packageName))
+                    return packageName;
+            }
+            catch
+            {
+                // Ignore and fall back to the source-defined app id.
+            }
+
+            return DefaultAppId;
         }
     }
 }

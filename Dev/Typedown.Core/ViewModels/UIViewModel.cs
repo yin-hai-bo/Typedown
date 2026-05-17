@@ -100,7 +100,7 @@ namespace Typedown.Core.ViewModels
                     title.Append('*');
                 if (AppViewModel.FileViewModel.FileName != null)
                     title.Append(AppViewModel.FileViewModel.FileName + " - ");
-                title.Append(Config.AppName);
+                title.Append(Config.AppDisplayName);
                 MainWindowTitle = title.ToString();
             }
             catch

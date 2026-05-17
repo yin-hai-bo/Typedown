@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
+using Typedown.Core;
 using Typedown.Core.Utilities;
 using Typedown.Windows;
 using Typedown.XamlUI;
@@ -14,7 +15,11 @@ namespace Typedown
 {
     public class App : XamlApplication
     {
-        private static readonly Mutex mutex = new(true, "Typedown.App.Mutex");
+        private static readonly string MUTEX_NAME = $"{Config.AppId}.App.Mutex";
+
+        private static readonly string PIPE_NAME = $"{Config.AppId}.App.Pipe";
+
+        private static readonly Mutex mutex = new(true, MUTEX_NAME);
 
         private App(IEnumerable<IXamlMetadataProvider> providers) : base(providers) { }
 
@@ -64,7 +69,7 @@ namespace Typedown
             {
                 try
                 {
-                    using var server = new NamedPipeServerStream("Typedown.App.PiPe", PipeDirection.InOut);
+                    using var server = new NamedPipeServerStream(PIPE_NAME, PipeDirection.InOut);
                     await server.WaitForConnectionAsync();
                     using var reader = new StreamReader(server);
                     using var writer = new StreamWriter(server);
@@ -84,7 +89,7 @@ namespace Typedown
         {
             try
             {
-                using var client = new NamedPipeClientStream(".", "Typedown.App.PiPe", PipeDirection.InOut);
+                using var client = new NamedPipeClientStream(".", PIPE_NAME, PipeDirection.InOut);
                 client.Connect();
                 using var reader = new StreamReader(client);
                 using var writer = new StreamWriter(client);

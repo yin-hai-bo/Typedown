@@ -18,7 +18,7 @@
 
         <StackPanel Margin="2,0,0,0">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0,0,4,0" Text="{x:Bind app:Config.AppName}"/>
+                <TextBlock Margin="0,0,4,0" Text="{x:Bind app:Config.AppDisplayName}"/>
                 <TextBlock Text="{x:Bind local:AboutApp.GetAppVersion()}"/>
             </StackPanel>
             <TextBlock Text="{u:LocaleString Key=About.Introduction}"/>

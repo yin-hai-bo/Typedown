@@ -7,12 +7,12 @@
   IgnorableNamespaces="uap rescap">
 
 	<Identity
-	  Name="62082Surprise.Typedown"
+	  Name="62082Surprise.TypedownCs"
 	  Publisher="CN=70DB4128-9F7D-4D9C-ADFC-7B5988F89237"
 	  Version="1.2.18.0" />
 
 	<Properties>
-		<DisplayName>Typedown</DisplayName>
+		<DisplayName>Typedown-cs</DisplayName>
 		<PublisherDisplayName>Surprise</PublisherDisplayName>
 		<Logo>Assets\StoreLogo.png</Logo>
 	</Properties>
@@ -105,7 +105,7 @@
 		  Executable="$targetnametoken$.exe"
 		  EntryPoint="$targetentrypoint$">
 			<uap:VisualElements
-			  DisplayName="Typedown"
+			  DisplayName="Typedown-cs"
 			  Description="Markdown editor"
 			  BackgroundColor="transparent"
 			  Square150x150Logo="Assets\Square150x150Logo.png"
@@ -115,7 +115,7 @@
 			</uap:VisualElements>
 			<Extensions>
 				<uap:Extension Category="windows.fileTypeAssociation">
-					<uap:FileTypeAssociation Name="typedown">
+					<uap:FileTypeAssociation Name="typedown-cs">
 						<uap:SupportedFileTypes>
 							<uap:FileType ContentType="text/markdown">.md</uap:FileType>
 							<uap:FileType ContentType="text/markdown">.markdown</uap:FileType>
@@ -124,7 +124,7 @@
 							<uap:FileType ContentType="text/markdown">.mdtext</uap:FileType>
 							<uap:FileType ContentType="text/markdown">.rmd</uap:FileType>
 						</uap:SupportedFileTypes>
-						<uap:DisplayName>Typedown</uap:DisplayName>
+						<uap:DisplayName>Typedown-cs</uap:DisplayName>
 						<uap:Logo>Assets\Markdown.png</uap:Logo>
 						<uap:InfoTip>Markdown</uap:InfoTip>
 					</uap:FileTypeAssociation>

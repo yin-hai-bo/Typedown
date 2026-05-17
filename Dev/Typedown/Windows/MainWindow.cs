@@ -43,7 +43,7 @@ namespace Typedown.Windows
         public MainWindow()
         {
             TrySetPrimaryLanguage();
-            Title = Config.AppName;
+            Title = Config.AppDisplayName;
             MinWidth = 480;
             MinHeight = 300;
             Width = 1130;
