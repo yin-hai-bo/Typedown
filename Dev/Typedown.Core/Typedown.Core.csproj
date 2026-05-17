@@ -779,16 +779,16 @@
     <Content Include="Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Resources\Strings\en\CommonResources.resw" />
+    <PRIResource Include="Resources\Strings\en-US\CommonResources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Resources\Strings\en\DialogResources.resw" />
+    <PRIResource Include="Resources\Strings\en-US\DialogResources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Resources\Strings\en\Resources.resw" />
+    <PRIResource Include="Resources\Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Resources\Strings\en\SettingsResources.resw" />
+    <PRIResource Include="Resources\Strings\en-US\SettingsResources.resw" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

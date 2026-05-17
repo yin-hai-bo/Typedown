@@ -31,11 +31,13 @@ namespace Typedown.Core.Utilities
 
         public static Dictionary<string, string> SupportedLangs { get; } = new()
         {
-            {"en","English"},
+            {"en-US","English (US)"},
             {"zh-Hans","中文 (简体)"},
         };
 
         public static Dictionary<string, string> LangsOptions { get; } = new(SupportedLangs.Append(new("default", GetString("UseSystemSetting"))));
+
+        public static bool IsSupportedLanguage(string key) => SupportedLangs.ContainsKey(key);
 
         public static string GetLangOptionDisplayName(string key) => LangsOptions[key];
 

@@ -221,7 +221,7 @@ namespace Typedown.Windows
             try
             {
                 var settingLanguage = AppViewModel.SettingsViewModel.Language;
-                if (Locale.SupportedLangs.ContainsKey(settingLanguage))
+                if (Locale.IsSupportedLanguage(settingLanguage))
                     ApplicationLanguages.PrimaryLanguageOverride = settingLanguage;
                 else
                     ApplicationLanguages.PrimaryLanguageOverride = string.Empty;

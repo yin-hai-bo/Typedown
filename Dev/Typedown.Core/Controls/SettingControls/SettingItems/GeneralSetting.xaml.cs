@@ -29,7 +29,7 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
             {
                 var settingLanguage = Settings.Language;
                 var currentLanguage = ApplicationLanguages.PrimaryLanguageOverride;
-                return Locale.SupportedLangs.ContainsKey(settingLanguage) != Locale.SupportedLangs.ContainsKey(currentLanguage) || (Locale.SupportedLangs.ContainsKey(settingLanguage) && settingLanguage != currentLanguage);
+                return Locale.IsSupportedLanguage(settingLanguage) != Locale.IsSupportedLanguage(currentLanguage) || (Locale.IsSupportedLanguage(settingLanguage) && settingLanguage != currentLanguage);
             }
             catch
             {

@@ -23,7 +23,7 @@
 	</Dependencies>
 
 	<Resources>
-		<Resource Language="en"/>
+		<Resource Language="en-US"/>
 		<Resource Language="zh-Hans"/>
 	</Resources>
 

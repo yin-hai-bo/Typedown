@@ -5,8 +5,9 @@ Console.OutputEncoding = Encoding.Unicode;
 Console.InputEncoding = Encoding.Unicode;
 
 string projectPath = @"C:\Users\12283\Documents\GitHub\Typedown";
+const string englishLang = "en-US";
 
-var manualLangs = new List<string>() { "en", "ja", "ko", "ru", "fr", "de", "es", "it", "nl", "ar" };
+var manualLangs = new List<string>() { englishLang };
 var batch = 30;
 
 foreach (var lang in manualLangs)
@@ -14,21 +15,19 @@ foreach (var lang in manualLangs)
     ManualTranslate(lang);
 }
 
-await AutoTranslate("zh-Hans", "zh-Hant");
-
-foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => !manualLangs.Contains(x) && x != "zh-Hant" && x != "zh-Hans"))
+foreach (var lang in TextDictionary.SupportedLangs.Keys.Where(x => x != englishLang && !manualLangs.Contains(x) && x != "zh-Hans"))
 {
-    await AutoTranslate("en", lang);
+    await AutoTranslate(englishLang, lang);
     Console.WriteLine(lang);
 }
 
 void ManualTranslate(string lang)
 {
     var zhInputs = TextResource.ReadItems(@$"{projectPath}\Dev\Typedown.Core\Resources\Strings\zh-Hans\").ToList();
-    var enInputs = TextResource.ReadItems(@$"{projectPath}\Dev\Typedown.Core\Resources\Strings\en\").ToList();
+    var enInputs = TextResource.ReadItems(@$"{projectPath}\Dev\Typedown.Core\Resources\Strings\{englishLang}\").ToList();
     var dictionary = TextDictionary.ReadItems(@$"{projectPath}\Tools\TranslationTool\Dictionary\").ToList();
     dictionary = dictionary.Merge(zhInputs, "zh-Hans").ToList();
-    dictionary = dictionary.Merge(enInputs, "en").ToList();
+    dictionary = dictionary.Merge(enInputs, englishLang).ToList();
     dictionary.WriteItems(@$"{projectPath}\Tools\TranslationTool\Dictionary\");
     while (true)
     {
@@ -44,7 +43,7 @@ void ManualTranslate(string lang)
         Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["zh-Hans"]})：" + string.Join("|", zhWords));
         Console.WriteLine();
 
-        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs["en"]})：" + string.Join("|", enWords));
+        Console.WriteLine($"待翻译文本({TextDictionary.SupportedLangs[englishLang]})：" + string.Join("|", enWords));
         Console.WriteLine();
 
         Console.WriteLine($"翻译结果({TextDictionary.SupportedLangs[lang]})：");
@@ -62,7 +61,8 @@ void ManualTranslate(string lang)
     }
 
     var output = dictionary.Select(x => dictionary.GetTextResourceItem(x.Table, x.Name, lang)).Where(x => !string.IsNullOrEmpty(x.Value));
-    output.WriteItems(@$"{projectPath}\Dev\Typedown.Core\Resources\Strings\{lang}\");
+    var outputLang = lang;
+    output.WriteItems(@$"{projectPath}\Dev\Typedown.Core\Resources\Strings\{outputLang}\");
 }
 
 async Task AutoTranslate(string sourceLang, string targetLang)
