@@ -38,11 +38,12 @@
     <TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled Condition="Exists('Typedown.Package_TemporaryKey.pfx')">True</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled Condition="!Exists('Typedown.Package_TemporaryKey.pfx')">False</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <EntryPointProjectUniqueName>..\..\Dev\Typedown\Typedown.csproj</EntryPointProjectUniqueName>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <PackageCertificateKeyFile>Typedown.Package_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile Condition="Exists('Typedown.Package_TemporaryKey.pfx')">Typedown.Package_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
@@ -127,7 +128,7 @@
     <Content Include="Assets\Markdown.png" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="priconfig.packaging.xml" />
-    <None Include="Typedown.Package_TemporaryKey.pfx" />
+    <None Include="Typedown.Package_TemporaryKey.pfx" Condition="Exists('Typedown.Package_TemporaryKey.pfx')" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>

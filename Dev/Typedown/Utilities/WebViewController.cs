@@ -27,8 +27,6 @@ namespace Typedown.Utilities
 
         public IntPtr ParentHWnd { get; private set; }
 
-        private static uint webView2ProcessId;
-
         private double WindowScale => PInvoke.GetDpiForWindow(ParentHWnd) / 96d;
 
         private static Task<CoreWebView2Environment> coreWebView2EnvironmentTask;
