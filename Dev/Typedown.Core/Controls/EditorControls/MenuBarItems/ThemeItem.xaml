@@ -16,4 +16,6 @@
     <ToggleMenuFlyoutItem x:Name="GitHubItem" Text="GitHub" Click="OnThemeItemClick"/>
     <ToggleMenuFlyoutItem x:Name="MinimalItem" Text="Minimal" Click="OnThemeItemClick"/>
     <ToggleMenuFlyoutItem x:Name="PaperItem" Text="Paper" Click="OnThemeItemClick"/>
+    <MenuFlyoutSeparator/>
+    <MenuFlyoutItem Text="{u:LocaleString Key=CustomStylesMenuItem}" Click="OnCustomStylesClick"/>
 </local:MenuBarItemBase>

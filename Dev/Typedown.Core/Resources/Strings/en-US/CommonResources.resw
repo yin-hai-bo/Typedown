@@ -265,6 +265,30 @@
     <value>Custom Shortcuts</value>
     <comment>自定义快捷键</comment>
   </data>
+  <data name="CustomStylesDialog.Title" xml:space="preserve">
+    <value>Custom Styles</value>
+  </data>
+  <data name="CustomStylesDialog.Description" xml:space="preserve">
+      <value>Add local .css files as custom document styles, or remove styles you no longer need.</value>
+  </data>
+  <data name="CustomStylesMenuItem" xml:space="preserve">
+      <value>Custom Styles...</value>
+  </data>
+  <data name="CustomStylesDialog.Duplicate" xml:space="preserve">
+      <value>A custom style with the same name already exists.</value>
+  </data>
+  <data name="CustomStylesDialog.InvalidFile" xml:space="preserve">
+    <value>Please select a valid .css file.</value>
+  </data>
+  <data name="CustomStylesDialog.ReservedName" xml:space="preserve">
+    <value>This name conflicts with a built-in style.</value>
+  </data>
+  <data name="CustomStylesDialog.DeleteTitle" xml:space="preserve">
+    <value>Delete Custom Style</value>
+  </data>
+  <data name="CustomStylesDialog.DeleteContent" xml:space="preserve">
+    <value>Delete custom style &quot;{0}&quot;?</value>
+  </data>
   <data name="Cut" xml:space="preserve">
     <value>Cut</value>
     <comment>编辑/剪切</comment>

@@ -52,6 +52,7 @@ namespace Typedown
             builder.AddScoped<RemoteInvoke>();
             builder.AddScoped<Transport>();
             builder.AddSingleton<AccessHistory>();
+            builder.AddSingleton<CustomDocumentStyleService>();
         }
 
         private static void RegisterComponent(ServiceCollection builder)

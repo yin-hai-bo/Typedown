@@ -265,6 +265,30 @@
     <value>自定义快捷键</value>
     <comment>自定义快捷键</comment>
   </data>
+  <data name="CustomStylesDialog.Title" xml:space="preserve">
+    <value>自定义样式</value>
+  </data>
+  <data name="CustomStylesDialog.Description" xml:space="preserve">
+    <value>添加本机的 .css 文件作为自定义文档样式，或移除不再需要的样式。</value>
+  </data>
+  <data name="CustomStylesMenuItem" xml:space="preserve">
+    <value>自定义样式...</value>
+  </data>
+  <data name="CustomStylesDialog.Duplicate" xml:space="preserve">
+    <value>已存在同名的自定义样式。</value>
+  </data>
+  <data name="CustomStylesDialog.InvalidFile" xml:space="preserve">
+    <value>请选择有效的 .css 文件。</value>
+  </data>
+  <data name="CustomStylesDialog.ReservedName" xml:space="preserve">
+    <value>该名称与内置样式冲突。</value>
+  </data>
+  <data name="CustomStylesDialog.DeleteTitle" xml:space="preserve">
+    <value>删除自定义样式</value>
+  </data>
+  <data name="CustomStylesDialog.DeleteContent" xml:space="preserve">
+    <value>确定要删除自定义样式“{0}”吗？</value>
+  </data>
   <data name="Cut" xml:space="preserve">
     <value>剪切</value>
     <comment>编辑/剪切</comment>

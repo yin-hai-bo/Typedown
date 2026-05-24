@@ -1,4 +1,5 @@
 using Typedown.Core.Enums;
+using Typedown.Core.Controls.DialogControls;
 using Windows.UI.Xaml;
 
 namespace Typedown.Core.Controls.EditorControls.MenuBarItems
@@ -54,6 +55,14 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             GitHubItem.IsChecked = Settings.DocumentTheme == DocumentTheme.GitHub;
             MinimalItem.IsChecked = Settings.DocumentTheme == DocumentTheme.Minimal;
             PaperItem.IsChecked = Settings.DocumentTheme == DocumentTheme.Paper;
+        }
+
+        private async void OnCustomStylesClick(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel == null)
+                return;
+
+            await CustomStylesDialog.OpenAsync(ViewModel);
         }
     }
 }

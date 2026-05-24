@@ -160,6 +160,9 @@
     <Compile Include="Controls\DialogControls\AddUploadConfigDialog.xaml.cs">
       <DependentUpon>AddUploadConfigDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DialogControls\CustomStylesDialog.xaml.cs">
+      <DependentUpon>CustomStylesDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DialogControls\FeedbackDialog.xaml.cs">
       <DependentUpon>FeedbackDialog.xaml</DependentUpon>
     </Compile>
@@ -342,6 +345,7 @@
     <Compile Include="Models\PersistentModels\ImageUploadConfig.cs" />
     <Compile Include="Models\RuntimeModels\ContentHistory.cs" />
     <Compile Include="Models\RuntimeModels\ContentState.cs" />
+    <Compile Include="Models\RuntimeModels\CustomDocumentStyle.cs" />
     <Compile Include="Models\RuntimeModels\CursorState.cs" />
     <Compile Include="Models\RuntimeModels\DimNumber.cs" />
     <Compile Include="Models\RuntimeModels\ExplorerItem.cs" />
@@ -410,6 +414,7 @@
     <Compile Include="Services\AccessHistory.cs" />
     <Compile Include="Services\AppDbContext.cs" />
     <Compile Include="Services\AutoBackup.cs" />
+    <Compile Include="Services\CustomDocumentStyleService.cs" />
     <Compile Include="Services\EventCenter.cs" />
     <Compile Include="Services\ImageAction.cs" />
     <Compile Include="Services\ImageUpload.cs" />
@@ -497,6 +502,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\DialogControls\AddUploadConfigDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DialogControls\CustomStylesDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
