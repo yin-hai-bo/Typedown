@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using Windows.ApplicationModel;
 using Windows.Storage;
 
@@ -49,6 +51,28 @@ namespace Typedown.Core
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 return path;
+            }
+        }
+
+        public static string GetSettingsFilePath()
+        {
+            return Path.Combine(GetLocalFolderPath(), "Settings.json");
+        }
+
+        public static string GetSavedLanguageSetting()
+        {
+            try
+            {
+                var settingsFile = GetSettingsFilePath();
+                if (!File.Exists(settingsFile))
+                    return Utilities.AppLanguage.DefaultSetting;
+
+                var settings = JObject.Parse(File.ReadAllText(settingsFile, Encoding.UTF8));
+                return settings["Language"]?.ToObject<string>() ?? Utilities.AppLanguage.DefaultSetting;
+            }
+            catch
+            {
+                return Utilities.AppLanguage.DefaultSetting;
             }
         }
 

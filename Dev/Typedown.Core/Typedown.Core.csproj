@@ -423,6 +423,7 @@
     <Compile Include="Utilities\ControlExtensions.cs" />
     <Compile Include="Utilities\CoreDispatcherExtensions.cs" />
     <Compile Include="Utilities\ExportMarkdown.cs" />
+    <Compile Include="Utilities\AppLanguage.cs" />
     <Compile Include="Utilities\FilePickersExtensions.cs" />
     <Compile Include="Utilities\FileTypeHelper.cs" />
     <Compile Include="Utilities\InjectionExtensions.cs" />

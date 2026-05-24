@@ -1,7 +1,7 @@
-﻿using Typedown.Core.Enums;
+using System.Diagnostics;
+using Typedown.Core.Enums;
 using Typedown.Core.Utilities;
 using Typedown.Core.ViewModels;
-using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -27,9 +27,9 @@ namespace Typedown.Core.Controls.SettingControls.SettingItems
         {
             try
             {
-                var settingLanguage = Settings.Language;
-                var currentLanguage = ApplicationLanguages.PrimaryLanguageOverride;
-                return Locale.IsSupportedLanguage(settingLanguage) != Locale.IsSupportedLanguage(currentLanguage) || (Locale.IsSupportedLanguage(settingLanguage) && settingLanguage != currentLanguage);
+                var expectedLanguage = AppLanguage.ResolveEffectiveLanguage(settingLang);
+                var currentLanguage = AppLanguage.GetCurrentStartupLanguage();
+                return expectedLanguage != currentLanguage;
             }
             catch
             {

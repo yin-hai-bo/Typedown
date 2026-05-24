@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -21,6 +21,9 @@ namespace Typedown.Core.Utilities
 
         private static readonly string assemblyName = typeof(Locale).Assembly.GetName().Name;
 
+        private static readonly Windows.ApplicationModel.Resources.Core.ResourceContext currentResourceContext =
+            Windows.ApplicationModel.Resources.Core.ResourceContext.GetForViewIndependentUse();
+
         public static IReadOnlyDictionary<ResourceSource, ResourceMap> ResourcesDictionary = new Dictionary<ResourceSource, ResourceMap>()
         {
             {ResourceSource.CommonResources,  ResourceManager.Current.MainResourceMap.GetSubtree($"{assemblyName}/" + nameof(ResourceSource.CommonResources))},
@@ -35,19 +38,27 @@ namespace Typedown.Core.Utilities
             {"zh-Hans","中文 (简体)"},
         };
 
-        public static Dictionary<string, string> LangsOptions { get; } = new(SupportedLangs.Append(new("default", GetString("UseSystemSetting"))));
+        public static IDictionary<string, string> LangsOptions => new Dictionary<string, string>(SupportedLangs)
+        {
+            [AppLanguage.DefaultSetting] = GetString("UseSystemSetting")
+        };
 
         public static bool IsSupportedLanguage(string key) => SupportedLangs.ContainsKey(key);
 
         public static string GetLangOptionDisplayName(string key) => LangsOptions[key];
 
-        public static ResourceContext ResourceContext { get; } = new();
+        public static ResourceContext ResourceContext => currentResourceContext;
+
+        public static void SetCurrentLanguage(string language)
+        {
+            ResourceContext.QualifierValues["Language"] = language;
+        }
 
         public static string GetString(string key, ResourceSource source = 0)
         {
             key = key.Replace('.', '/');
             if (source == 0 || !ResourcesDictionary.ContainsKey(source))
-                return ResourcesDictionary.Values.Select(x => x.GetValue(key)?.ValueAsString).Where(x => !string.IsNullOrEmpty(x)).FirstOrDefault();
+                return ResourcesDictionary.Values.Select(x => x.GetValue(key, ResourceContext)?.ValueAsString).Where(x => !string.IsNullOrEmpty(x)).FirstOrDefault();
             return ResourcesDictionary[source].GetValue(key, ResourceContext)?.ValueAsString;
         }
 

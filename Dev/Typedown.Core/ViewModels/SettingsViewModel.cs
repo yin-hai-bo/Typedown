@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Typedown.Core.Controls;
 using Typedown.Core.Enums;
 using Typedown.Core.Interfaces;
@@ -41,7 +42,7 @@ namespace Typedown.Core.ViewModels
         public DocumentTheme DocumentTheme { get => GetSettingValue(Enums.DocumentTheme.GitHub); set => SetSettingValue(value); }
         public bool AutoSave { get => GetSettingValue(false); set => SetSettingValue(value); }
         public AppTheme AppTheme { get => GetSettingValue(AppTheme.Default); set => SetSettingValue(value); }
-        public string Language { get => GetSettingValue("default"); set => SetSettingValue(value); }
+        public string Language { get => GetSettingValue(AppLanguage.DefaultSetting); set => SetSettingValue(value); }
         public int WordCountMethod { get => GetSettingValue(0); set => SetSettingValue(value); }
         public int TabSize { get => GetSettingValue(4); set => SetSettingValue(value); }
         public bool SpellcheckEnabled { get => GetSettingValue(false); set => SetSettingValue(value); }
@@ -79,7 +80,7 @@ namespace Typedown.Core.ViewModels
 
         private readonly CompositeDisposable disposables = new();
 
-        private readonly string settingsFile = Path.Combine(Config.GetLocalFolderPath(), "Settings.json");
+        private readonly string settingsFile = Config.GetSettingsFilePath();
 
         private JToken store;
 
@@ -113,7 +114,7 @@ namespace Typedown.Core.ViewModels
         {
             try
             {
-                store = JToken.Parse(File.ReadAllText(settingsFile));
+                store = JToken.Parse(File.ReadAllText(settingsFile, Encoding.UTF8));
             }
             catch
             {
@@ -125,7 +126,7 @@ namespace Typedown.Core.ViewModels
         {
             try
             {
-                await File.WriteAllTextAsync(settingsFile, store.ToString());
+                await File.WriteAllTextAsync(settingsFile, store.ToString(), Encoding.UTF8);
             }
             catch
             {

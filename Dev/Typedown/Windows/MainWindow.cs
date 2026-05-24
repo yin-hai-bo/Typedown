@@ -15,7 +15,6 @@ using Typedown.Core.ViewModels;
 using Typedown.Services;
 using Typedown.Utilities;
 using Typedown.XamlUI;
-using Windows.Globalization;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
@@ -42,7 +41,6 @@ namespace Typedown.Windows
 
         public MainWindow()
         {
-            TrySetPrimaryLanguage();
             Title = Config.AppDisplayName;
             MinWidth = 480;
             MinHeight = 300;
@@ -216,20 +214,5 @@ namespace Typedown.Windows
             });
         }
 
-        private void TrySetPrimaryLanguage()
-        {
-            try
-            {
-                var settingLanguage = AppViewModel.SettingsViewModel.Language;
-                if (Locale.IsSupportedLanguage(settingLanguage))
-                    ApplicationLanguages.PrimaryLanguageOverride = settingLanguage;
-                else
-                    ApplicationLanguages.PrimaryLanguageOverride = string.Empty;
-            }
-            catch
-            {
-
-            }
-        }
     }
 }

@@ -45,6 +45,7 @@ namespace Typedown
 
         public static void LaunchNewApplication()
         {
+            AppLanguage.ApplyLanguageAtStartup(Config.GetSavedLanguageSetting());
             var providers = new List<IXamlMetadataProvider>() { new Core.Typedown_Core_XamlTypeInfo.XamlMetaDataProvider() };
             var xamlApp = new App(providers) { Resources = new Core.Resources() };
             xamlApp.Run();
