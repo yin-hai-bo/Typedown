@@ -19,6 +19,18 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             UpdateCheckedItems();
         }
 
+        private void OnAppThemeItemClick(object sender, RoutedEventArgs e)
+        {
+            if (sender == UseSystemThemeItem)
+                Settings.AppTheme = AppTheme.Default;
+            else if (sender == LightThemeItem)
+                Settings.AppTheme = AppTheme.Light;
+            else if (sender == DarkThemeItem)
+                Settings.AppTheme = AppTheme.Dark;
+
+            UpdateCheckedItems();
+        }
+
         private void OnThemeItemClick(object sender, RoutedEventArgs e)
         {
             if (sender == GitHubItem)
@@ -36,6 +48,9 @@ namespace Typedown.Core.Controls.EditorControls.MenuBarItems
             if (Settings == null)
                 return;
 
+            UseSystemThemeItem.IsChecked = Settings.AppTheme == AppTheme.Default;
+            LightThemeItem.IsChecked = Settings.AppTheme == AppTheme.Light;
+            DarkThemeItem.IsChecked = Settings.AppTheme == AppTheme.Dark;
             GitHubItem.IsChecked = Settings.DocumentTheme == DocumentTheme.GitHub;
             MinimalItem.IsChecked = Settings.DocumentTheme == DocumentTheme.Minimal;
             PaperItem.IsChecked = Settings.DocumentTheme == DocumentTheme.Paper;

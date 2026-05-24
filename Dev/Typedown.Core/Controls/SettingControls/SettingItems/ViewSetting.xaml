@@ -2,13 +2,9 @@
     x:Class="Typedown.Core.Controls.SettingControls.SettingItems.ViewSetting"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Typedown.Core.Controls.SettingControls.SettingItems"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:controls="using:Typedown.Core.Controls" 
-    xmlns:enums="using:Typedown.Core.Enums" 
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
-    xmlns:converters="using:Typedown.Core.Converters" 
     xmlns:viewmodels="using:Typedown.Core.ViewModels" 
     xmlns:app="using:Typedown.Core"
     xmlns:u="using:Typedown.Core.Utilities"
@@ -20,23 +16,6 @@
     <StackPanel Spacing="4">
 
         <TextBlock Text="{u:LocaleString Key=View.Window}" Margin="0,0,0,4"/>
-        <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.AppTheme.Title}" Description="{u:LocaleString Key=View.AppTheme.Description}">
-            <controls:ExpanderSettingItem.Icon>
-                <FontIcon Glyph="&#xe790;"/>
-            </controls:ExpanderSettingItem.Icon>
-            <controls:ExpanderSettingItem.State>
-                <controls:EnumNameBlock Value="{x:Bind Settings.AppTheme, Mode=OneWay}"/>
-            </controls:ExpanderSettingItem.State>
-            <StackPanel Padding="48,16,16,16">
-                <muxc:RadioButtons ItemsSource="{x:Bind enums:Enumerable.AppThemes}" SelectedItem="{Binding SettingsViewModel.AppTheme, Mode=TwoWay}">
-                    <muxc:RadioButtons.ItemTemplate>
-                        <DataTemplate>
-                            <controls:EnumNameBlock Value="{Binding}"/>
-                        </DataTemplate>
-                    </muxc:RadioButtons.ItemTemplate>
-                </muxc:RadioButtons>
-            </StackPanel>
-        </controls:ExpanderSettingItem>
         <controls:ExpanderSettingItem Title="{u:LocaleString Key=View.UseMicaMaterial.Title}" Description="{u:LocaleString Key=View.UseMicaMaterial.Description}">
             <controls:ExpanderSettingItem.Icon>
                 <FontIcon Glyph="&#xf4a5;"/>

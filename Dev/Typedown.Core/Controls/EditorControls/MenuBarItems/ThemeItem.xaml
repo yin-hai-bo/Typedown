@@ -9,6 +9,10 @@
     xmlns:u="using:Typedown.Core.Utilities"
     Loaded="OnLoaded"
     mc:Ignorable="d">
+    <ToggleMenuFlyoutItem x:Name="UseSystemThemeItem" Text="{u:LocaleString Key=UseSystemSetting}" Click="OnAppThemeItemClick"/>
+    <ToggleMenuFlyoutItem x:Name="LightThemeItem" Text="{u:LocaleString Key=View.AppTheme.Light}" Click="OnAppThemeItemClick"/>
+    <ToggleMenuFlyoutItem x:Name="DarkThemeItem" Text="{u:LocaleString Key=View.AppTheme.Dark}" Click="OnAppThemeItemClick"/>
+    <MenuFlyoutSeparator/>
     <ToggleMenuFlyoutItem x:Name="GitHubItem" Text="GitHub" Click="OnThemeItemClick"/>
     <ToggleMenuFlyoutItem x:Name="MinimalItem" Text="Minimal" Click="OnThemeItemClick"/>
     <ToggleMenuFlyoutItem x:Name="PaperItem" Text="Paper" Click="OnThemeItemClick"/>
