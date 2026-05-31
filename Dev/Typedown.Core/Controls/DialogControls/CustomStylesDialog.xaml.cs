@@ -33,6 +33,7 @@ namespace Typedown.Core.Controls.DialogControls
                 XamlRoot = viewModel.XamlRoot,
                 ViewModel = viewModel
             };
+            dialog.CustomStyleService?.Reload();
             dialog.Bindings.Update();
             await dialog.ShowAsync();
         }
@@ -82,6 +83,21 @@ namespace Typedown.Core.Controls.DialogControls
                 return;
 
             CustomStyleService.Remove(style);
+        }
+
+        private async void OnOpenButtonClick(object sender, RoutedEventArgs e)
+        {
+            if ((sender as FrameworkElement)?.Tag is not CustomDocumentStyle style)
+                return;
+
+            try
+            {
+                Common.OpenUrl(style.Path);
+            }
+            catch (Exception ex)
+            {
+                await AppContentDialog.Create(Locale.GetString("Error"), ex.Message, Locale.GetString("Ok")).ShowAsync(XamlRoot);
+            }
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)

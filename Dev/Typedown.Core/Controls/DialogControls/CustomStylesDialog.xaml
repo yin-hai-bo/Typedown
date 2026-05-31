@@ -18,7 +18,12 @@
         <Button HorizontalAlignment="Left" MinWidth="120" Style="{ThemeResource AccentButtonStyle}" Click="OnAddButtonClick">
             <TextBlock Text="{u:LocaleString Key=Add}"/>
         </Button>
-        <ListView ItemsSource="{x:Bind CustomStyles, Mode=OneWay}" SelectionMode="None">
+        <ListView x:Name="StylesListView"
+                  ItemsSource="{x:Bind CustomStyles, Mode=OneWay}"
+                  SelectionMode="None"
+                  MaxHeight="420"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.HorizontalScrollMode="Disabled">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -29,11 +34,34 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:CustomDocumentStyle">
-                    <controls:NormalSettingItem Title="{x:Bind Name, Mode=OneWay}">
-                        <Button Tag="{x:Bind}" Click="OnDeleteButtonClick" MinWidth="100">
-                            <TextBlock Text="{u:LocaleString Key=Delete}"/>
-                        </Button>
-                    </controls:NormalSettingItem>
+                    <Border Background="{ThemeResource ExpanderHeaderBackground}"
+                            BorderThickness="{ThemeResource ExpanderHeaderBorderThickness}"
+                            BorderBrush="{ThemeResource ExpanderHeaderBorderBrush}"
+                            CornerRadius="{ThemeResource ControlCornerRadius}">
+                        <Grid MinHeight="56" Padding="12,8,12,8" ColumnSpacing="32">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                       Text="{x:Bind Name}"
+                                       VerticalAlignment="Center"
+                                       MaxWidth="200"
+                                       TextWrapping="Wrap"
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxLines="2"/>
+
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                                <Button Tag="{x:Bind}" Click="OnOpenButtonClick" MinWidth="80">
+                                    <TextBlock Text="{u:LocaleString Key=Open}"/>
+                                </Button>
+                                <Button Tag="{x:Bind}" Click="OnDeleteButtonClick" MinWidth="80">
+                                    <TextBlock Text="{u:LocaleString Key=Delete}"/>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
